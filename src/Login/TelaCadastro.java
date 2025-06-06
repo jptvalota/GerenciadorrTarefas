@@ -147,7 +147,8 @@ public class TelaCadastro extends javax.swing.JFrame {
               String strTeste = txtEmail.getText(); 
               boolean palavra = strTeste.matches("\\w+@\\w+\\.\\w{2,3}|\\w+@\\w+\\.\\w{2,3}.\\w{2,3}");
               if(palavra==true && txtSenha.getText().length()>6) {
-                    JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso ");    
+                    JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso ");  
+                         this.dispose();
               }
               else if(palavra==true && txtSenha.getText().length()<6){
                     JOptionPane.showMessageDialog(null, "Senha deve ter no mínimo 6 caracteres "); 
@@ -164,7 +165,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "É obrigatório aceitar os termos de contrato para cadastro ");    
           }
     }
-      this.dispose();
+ 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**

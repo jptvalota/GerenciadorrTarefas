@@ -151,7 +151,10 @@ public class TelaEntrada extends javax.swing.JFrame {
               String strTeste = txtEmail.getText(); 
               boolean palavra = strTeste.matches("\\w+@\\w+\\.\\w{2,3}|\\w+@\\w+\\.\\w{2,3}.\\w{2,3}");
               if(palavra==true && txtSenha.getText().length()>6) {
-                    JOptionPane.showMessageDialog(null, "Entrada realizada com sucesso ");    
+                    JOptionPane.showMessageDialog(null, "Entrada realizada com sucesso ");
+                     this.dispose();
+          TelaListagem telaListagem = new TelaListagem();
+          telaListagem.setVisible(true);
               }
               else if(palavra==true && txtSenha.getText().length()<6){
                     JOptionPane.showMessageDialog(null, "Senha deve ter no mínimo 6 caracteres "); 
@@ -168,9 +171,7 @@ public class TelaEntrada extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "É obrigatório aceitar os termos de contrato para entrar ");    
           }
       }
-          this.dispose();
-          TelaListagem telaListagem = new TelaListagem();
-          telaListagem.setVisible(true);
+          
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnCadastrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarseActionPerformed

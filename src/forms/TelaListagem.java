@@ -4,7 +4,8 @@
  */
 package forms;
 
-import TarefaDAO.TarefaDAO;
+import service.TarefaService;
+
 import beans.Tarefa;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -16,28 +17,42 @@ import javax.swing.table.TableRowSorter;
  */
 public class TelaListagem extends javax.swing.JFrame {
 
-       private void preencherTabela() {
-               TarefaDAO tarefaDAO = new TarefaDAO();
-                String nomeTarefa = txtNomeTarefa.getText();
-                List<Tarefa> listaTarefas = tarefaDAO.getTarefa(nomeTarefa);
-            
-                DefaultTableModel tabelaTarefas = (DefaultTableModel) tblTarefas.getModel();
-                    tabelaTarefas.setNumRows(0);
-                tblTarefas.setRowSorter(new TableRowSorter(tabelaTarefas));
-                      
-                for (Tarefa c : listaTarefas) { //em cada volta do laço for, o mesmo adiciona uma dado(empresa) dentro do objeto c
-                    Object[] obj = new Object[] { 
-                        c.getId(),            //id
-                        c.getNomeTarefa(),   //nomeempresa
-                        c.getDescricao(),
-                        c.getEstado(),//areadeatuacao            
-                    };
-                    tabelaTarefas.addRow(obj);
-                }    
-            }
+        private final TarefaService tarefaService;
+
     public TelaListagem() {
         initComponents();
-        preencherTabela();
+        tarefaService = new TarefaService();
+         txtNomeTarefa.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNomeTarefaKeyReleased(evt); 
+            }
+        });
+        preencherTabela("");
+    }
+
+    private void preencherTabela(String filtro) {
+        List<Tarefa> listaTarefas = tarefaService.buscarTarefas(filtro);
+
+        DefaultTableModel tabelaTarefas = (DefaultTableModel) tblTarefas.getModel();
+        tabelaTarefas.setRowCount(0); // limpar tabela
+        tblTarefas.setRowSorter(new TableRowSorter<>(tabelaTarefas));
+
+        for (Tarefa t : listaTarefas) {
+            Object[] linha = new Object[]{
+                t.getId(),
+                t.getNomeTarefa(),
+                t.getDescricao(),
+                t.getEstado()
+            };
+            tabelaTarefas.addRow(linha);
+        }
+    }
+
+    // Crie um listener para o txtNomeTarefa para buscar conforme o usuário digita
+    private void txtNomeTarefaKeyReleased(java.awt.event.KeyEvent evt) {
+        String filtro = txtNomeTarefa.getText().trim();
+        preencherTabela(filtro);
     }
 
     /**
@@ -74,6 +89,12 @@ public class TelaListagem extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblTarefas);
 
         jLabel2.setText("Nome da tarefa:");
+
+        txtNomeTarefa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeTarefaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,6 +186,10 @@ public class TelaListagem extends javax.swing.JFrame {
                 fre.setVisible(true);
                 dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtNomeTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeTarefaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeTarefaActionPerformed
 
     /**
      * @param args the command line arguments
