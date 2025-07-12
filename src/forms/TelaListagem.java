@@ -70,7 +70,7 @@ public class TelaListagem extends javax.swing.JFrame {
         tblTarefas = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         txtNomeTarefa = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        BtnEdit = new javax.swing.JButton();
         btnCadastrarTarefa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -129,10 +129,10 @@ public class TelaListagem extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jButton1.setText("Editar Tarefa");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BtnEdit.setText("Editar Tarefa");
+        BtnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BtnEditActionPerformed(evt);
             }
         });
 
@@ -154,7 +154,7 @@ public class TelaListagem extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(BtnEdit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCadastrarTarefa)
                         .addGap(21, 21, 21))))
@@ -165,7 +165,7 @@ public class TelaListagem extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(BtnEdit)
                     .addComponent(btnCadastrarTarefa))
                 .addContainerGap())
         );
@@ -180,12 +180,12 @@ public class TelaListagem extends javax.swing.JFrame {
                 dispose();
     }//GEN-LAST:event_btnCadastrarTarefaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
          TelaEditarTarefa fre = new TelaEditarTarefa();
                 //Mostrando o form quando clicar no botão
                 fre.setVisible(true);
                 dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BtnEditActionPerformed
 
     private void txtNomeTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeTarefaActionPerformed
         // TODO add your handling code here:
@@ -227,8 +227,8 @@ public class TelaListagem extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnEdit;
     private javax.swing.JButton btnCadastrarTarefa;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
